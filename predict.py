@@ -36,10 +36,6 @@ def final_predict():
     model=utils.load_checkpoint(save_path)
     with open(names, 'r') as json_f:
         name = json.load(json_f)
-        
-#     probabilities = utils.predict(image_path, model, topk_outputs, device)
-#     probability = np.array(probabilities[0][0])
-#     labels = [name[str(index + 1)] for index in np.array(probabilities[1][0])]
     
     top_probabs, top_labels = utils.predict(image_path, model, topk_outputs, device) 
     top_probabs = top_probabs[0].cpu().detach().numpy() 
